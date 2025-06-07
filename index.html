@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox audio limit bypass</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Roblox audio limit bypass</h1>
+
+        <section class="card" id="input-section">
+            <h2>1. Add Sounds</h2>
+            <div class="controls">
+                <input type="file" id="audioFile" accept="audio/*">
+                <input type="text" id="audioLabel" placeholder="Label (e.g., CAT, GREETING_HELLO)">
+                <button id="addSoundBtn">Add Sound</button>
+            </div>
+        </section>
+
+        <section class="card" id="queue-section">
+            <h2>2. Sound Queue</h2>
+            <ul id="soundQueueList">
+                <!-- Sounds will be listed here by JS -->
+            </ul>
+            <p id="queue-empty-message" style="display: none;">Queue is empty. Add some sounds above.</p>
+        </section>
+
+        <section class="card" id="generation-section">
+            <h2>3. Generate Outputs</h2>
+            <button id="generateBtn" disabled>Generate Combined Audio & Scripts</button>
+            <p id="statusMessage" class="status"></p>
+        </section>
+
+        <div id="results" style="display:none;">
+            <section class="card" id="audio-output-section">
+                <h2>Combined Audio File</h2>
+                <audio id="combinedAudioPlayer" controls></audio>
+                <br>
+                <a id="downloadAudioLink" href="#" download="combined_audio.wav">Download Combined Audio (WAV)</a>
+            </section>
+
+            <section class="card" id="wordmap-output-section">
+                <h2>WordMap (Lua Table Snippet)</h2>
+                <div class="textarea-container">
+                    <textarea id="wordMapOutput" rows="10" readonly></textarea>
+                    <button class="copy-btn" data-target="wordMapOutput">Copy</button>
+                </div>
+            </section>
+
+            <section class="card" id="luascript-output-section">
+                <h2>Full Lua Script for Roblox</h2>
+                <p class="script-instructions">
+                    <strong>Instructions:</strong>
+                    <br>1. Place this LocalScript where its parent contains the UI Buttons (e.g., under a ScreenGui).
+                    <br>2. Create a Sound object (default name: Sound) as a direct child of this LocalScript. Upload your generated audio file to this Sound object.
+                    <br>3. Add interactions (eg. script.Parent.Dog.MouseButton1Click:Connect(function() print("e") end))
+                </p>
+                <div class="textarea-container">
+                    <textarea id="fullLuaScriptOutput" rows="25" readonly></textarea>
+                    <button class="copy-btn" data-target="fullLuaScriptOutput">Copy</button>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
